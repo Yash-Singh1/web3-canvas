@@ -7,6 +7,7 @@ import { FileSystemList } from './Components/FileSystem/FileSystemList';
 import { userSession } from './auth';
 import type { UserData } from '@stacks/connect';
 import { Switch, Route } from 'react-router-dom';
+import './index.css';
 
 function App() {
   const [userData, setUserData] = useState<UserData | null>(null);
