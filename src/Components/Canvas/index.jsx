@@ -1,29 +1,20 @@
-import React, {useEffect, useRef, useState} from "react";
-import Canvas from './Canvas'
+import React, { useRef, useState } from 'react';
+import Canvas from './Canvas';
 
-function App({file, save}) {
-    function save() {
+function App({ file, save }) {
 
-    }
+  let canvasRef = useRef();
 
-    let canvasRef = useRef()
-    let contextRef = useRef()
-
-    let [drawing, setDrawing] = useState(false)
-    let [mouseDown, setMouseDown] = useState(false)
-    let [saved, setSaved] = useState()
-    let [image, setImage] = useState()
-
-
-    
-    return (
-        <div>
-            <Canvas saved={saved} setImage={setImage} setSaved={setSaved} canvasRef={canvasRef} started={file.started} />
-            <p>
-                {saved}
-            </p>
-        </div>
-    )
+  return (
+    <div>
+      <Canvas
+        saved={file.image}
+        setSaved={save}
+        canvasRef={canvasRef}
+        started={file.started}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
