@@ -1,33 +1,32 @@
+import { Button, Text } from '@blockstack/ui'
 import React, {useRef, useState, useEffect} from 'react'
 
 export default function Canvas({ saved, setSaved, canvasRef, started }) {
   let contextRef = useRef()
 
-  let [drawing, setDrawing] = useState(false)
+  let [drawing, setDrawing] = useState(true)
   let [mouseDown, setMouseDown] = useState(false)
 
   useEffect(() => {
-      if(started) {
-        drawing = new Image()
-        drawing.src = saved
-        const context = canvasRef.current.getContext('2d')
-        context.drawImage(drawing, 0, 0)
-
-      }
-
       const canvas = canvasRef.current
-      canvas.width = window.innerWidth * 2;
-      canvas.height = window.innerHeight * 2;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       canvas.style.width = `${window.innerWidth}px`
       canvas.style.height = `${window.innerHeight}px`
 
       const context = canvas.getContext('2d')
-      context.scale(2, 2)
+      // context.scale(2, 2)
       context.lineCap = 'round'
       context.strokeStyle = 'black'
       context.lineWidth = 5
       contextRef.current = context
 
+      if(started) {
+        drawing = document.createElement('img')
+        drawing.src = saved
+        const context = canvasRef.current.getContext('2d')
+        context.drawImage(drawing, 0, 0, )
+      }
   }, [])
 
   function startDrawing({nativeEvent}) {
@@ -79,7 +78,8 @@ export default function Canvas({ saved, setSaved, canvasRef, started }) {
         onMouseUp={endDrawing}
         onMouseMove={draw}
         />
-      <button onClick={drawing ? startDraw : erase}>{'Toggle'}</button>
+      <Button onClick={drawing ? erase : startDraw}>Toggle</Button>
+      <Text style={{ marginLeft: '10px' }}>Current mode: {drawing ? 'Drawing' : 'Erasing'}</Text>
     </div>
   )
 }
