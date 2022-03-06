@@ -1,0 +1,13 @@
+.open-filename {
+  cursor: pointer;
+}
+
+input.filename-input {
+  background: none;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  width: calc(100% - 70px - 2rem);
+  box-shadow: 0 0 0 1px rgb(170 179 255 / 75%);
+}
