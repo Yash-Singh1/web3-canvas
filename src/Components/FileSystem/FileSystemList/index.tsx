@@ -77,7 +77,7 @@ export const FileSystemList = () => {
               {getHeader()}
             </Text>
           </Box>
-          {loading ? null /* Put spinner here */ : (
+          {loading ? <span className='loader'></span> : (
             <>
               {files}
               <Button onClick={createFile} style={{ marginTop: '10px', height: '3rem' }}>

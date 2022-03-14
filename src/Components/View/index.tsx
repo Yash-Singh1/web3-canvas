@@ -5,6 +5,7 @@ import { fetchFiles, saveFiles } from '../../storage';
 import { userSession } from '../../auth';
 import type { FileSystem } from '../../types/filesystem';
 import Canvas from '../Canvas/index.jsx';
+import { default as TextBox } from '../Text';
 
 export default function View() {
   const { id } = useParams() as { id: string };
@@ -27,6 +28,7 @@ export default function View() {
             <Text textStyle="display.large" fontSize={7}>
               Loading...
             </Text>
+            <span className='loader'></span>
           </Box>
         </Flex>
       </Box>
@@ -44,15 +46,6 @@ export default function View() {
   if (file.type === 'canvas') {
     return <Canvas save={save} file={JSON.parse(file.content)} />;
   } else {
-    return (
-      <textarea
-        value={file.content}
-        style={{ width: '100%', height: '100%' }}
-        onChange={e => {
-          file.content = e.target.value;
-          save(e.target.value);
-        }}
-      ></textarea>
-    );
+    return <TextBox save={save} content={file.content} />;
   }
 }
