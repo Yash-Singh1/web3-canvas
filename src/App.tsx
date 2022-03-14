@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import type { FC } from 'react';
 import { Signin } from './Components/Signin';
 import Header from './Components/Header';
 import View from './Components/View';
@@ -9,7 +10,7 @@ import type { UserData } from '@stacks/connect';
 import { Switch, Route } from 'react-router-dom';
 import './index.css';
 
-function App() {
+const App: FC = function () {
   const [userData, setUserData] = useState<UserData | null>(null);
   // function handleSignOut(e: Event) {
   //   e.preventDefault();

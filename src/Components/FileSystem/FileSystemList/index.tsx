@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { Flex, Box, Text, Button } from '@blockstack/ui';
 import { userSession } from '../../../auth';
 import FileComponent from '..';
@@ -6,7 +6,7 @@ import { fetchFiles, saveFiles } from '../../../storage';
 import type { File, FileSystem } from '../../../types/filesystem';
 import { v4 as uuid } from 'uuid';
 
-export const FileSystemList = () => {
+export const FileSystemList: FC = () => {
   const [fileSystem, setFileSystem] = useState<FileSystem>([]);
   const [loading, setLoading] = useState<boolean>(true);
 

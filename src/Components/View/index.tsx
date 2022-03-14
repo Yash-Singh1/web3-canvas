@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import { Box, Text, Flex } from '@blockstack/ui';
 import { useParams } from 'react-router-dom';
 import { fetchFiles, saveFiles } from '../../storage';
@@ -7,7 +8,7 @@ import type { FileSystem } from '../../types/filesystem';
 import Canvas from '../Canvas/index.jsx';
 import { default as TextBox } from '../Text';
 
-export default function View() {
+const View: FC = function View() {
   const { id } = useParams() as { id: string };
   const [fileSystem, setFileSystem] = useState<FileSystem>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -49,3 +50,5 @@ export default function View() {
     return <TextBox save={save} content={file.content} />;
   }
 }
+
+export default View;

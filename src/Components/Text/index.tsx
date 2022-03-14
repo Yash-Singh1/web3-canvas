@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
+import type { FC } from 'react';
 import { Button } from '@blockstack/ui';
 import './index.css';
 
-export default function Text({
-  content,
-  save,
-}: {
+const Text: FC<{
   content: string;
   save: (writing: string) => void;
-}) {
+}> = function Text({ content, save }) {
   const [writing, setContent] = useState(content);
   return (
     <>
@@ -22,4 +20,6 @@ export default function Text({
       <Button onClick={() => save(writing)}>Save</Button>
     </>
   );
-}
+};
+
+export default Text;

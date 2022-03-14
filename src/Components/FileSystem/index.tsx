@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { Flex, Box, Input, Text } from '@blockstack/ui';
 import './FileSystem.css';
 import type { File } from '../../types/filesystem';
@@ -11,7 +11,7 @@ interface FileProps {
   create: () => void;
 }
 
-export default function ({ file, index, save, create }: FileProps) {
+const FileSystem: FC<FileProps> = function ({ file, index, save, create }) {
   const [redirectToView, setRedirectToView] = useState<boolean>(false);
   const [input, setInput] = useState<string>(file.filename);
   const [focused, setFocused] = useState<boolean>(false);
@@ -98,4 +98,6 @@ export default function ({ file, index, save, create }: FileProps) {
       </Flex>
     </Box>
   );
-}
+};
+
+export default FileSystem;

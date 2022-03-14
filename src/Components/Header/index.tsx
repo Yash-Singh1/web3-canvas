@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Avatar from './Avatar';
 import { Box, Text } from '@blockstack/ui';
 import { getPerson, getUserData, userSession } from '../../auth';
 import { Redirect } from 'react-router-dom';
 
-function Header() {
+const Header: FC = function Header() {
   const [navigateToRoot, goToRoot] = useState<boolean>(false);
 
   if (navigateToRoot) {

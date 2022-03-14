@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box } from '@blockstack/ui';
 
-export default function Avatar({ avatar }: { avatar: string }) {
+const Avatar: FC<{ avatar: string }> = function Avatar({ avatar }) {
   return (
     <Box
       borderRadius="50%"
@@ -16,4 +16,6 @@ export default function Avatar({ avatar }: { avatar: string }) {
       <Box as="img" src={avatar} maxWidth="100%" minHeight="24px" minWidth="24px" />
     </Box>
   );
-}
+};
+
+export default Avatar;
